@@ -3,15 +3,21 @@
 int main()
 {
     VM vm;
+    // TODO: Implement an Assembler to produce bin
+    // TODO: Implement a binary loader
     vm.mem[0] = 0x10;
     vm.mem[1] = 5;
-    vm.mem[2] = 0x5e0;
+    vm.mem[2] = 0x40;
     vm.mem[3] = 3;
+    vm.mem[4] = 0xB0;
+    vm.mem[5] = 0;
+    vm.mem[6] = 0xF0;
+    vm.mem[7] = 0x00;
 
-    vm.execute();
-    vm.execute();
-
-    std::cout << static_cast<int>(vm.R[0]);
+    while (vm.execute())
+    {
+        // TODO: Do stuff
+    }
 
     return 0;
 }
@@ -109,6 +115,39 @@ bool VM::execute()
         }
     }
     break;
+
+    case INST::OUT:
+    {
+        std::cout << "\033[32m\n\tLOG printed by software : " << std::hex << "R" << dst << " = " << std::setw(2) << std::setfill('0') << static_cast<uint32_t>(R[dst]) << std::dec << "\n\033[0m";
+    }
+    break;
+
+    case INST::AND:
+    {
+        R[dst] &= imm;
+        if (R[dst] == 0)
+            FG |= static_cast<uint32_t>(FLAGS::Z);
+    }
+    break;
+
+    case INST::OR:
+    {
+        R[dst] |= imm;
+        if (R[dst] == 0)
+            FG |= static_cast<uint32_t>(FLAGS::Z);
+    }
+    break;
+
+    case INST::NOT:
+    {
+        R[dst] = ~R[dst];
+        if (R[dst] == 0)
+            FG |= static_cast<uint32_t>(FLAGS::Z);
+    }
+    break;
+
+    case INST::HLT:
+        return false;
 
     default:
     {

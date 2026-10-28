@@ -1,0 +1,85 @@
+# ==============================
+# Build directories
+# ==============================
+build/
+build-*/
+cmake-build-*/
+out/
+
+# ==============================
+# CMake generated files
+# ==============================
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+install_manifest.txt
+CTestTestfile.cmake
+compile_commands.json
+Makefile
+.ninja_deps
+.ninja_log
+build.ninja
+
+# ==============================
+# Compiled binaries and objects
+# ==============================
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.so.*
+*.dll
+*.dylib
+*.exe
+*.out
+*.pdb
+*.ilk
+*.exp
+*.idb
+*.pch
+
+# ==============================
+# Debugging / profiling
+# ==============================
+*.prof
+*.profraw
+*.gcda
+*.gcno
+*.gcov
+core
+core.*
+
+# ==============================
+# IDEs and editors
+# ==============================
+.vs/
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# ==============================
+# OS-generated files
+# ==============================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==============================
+# Temporary files
+# ==============================
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# ==============================
+# Environment / secrets
+# ==============================
+.env
+.env.*
+!.env.example
